@@ -14,8 +14,8 @@ namespace RecomERP.MobileAPI.Domain.Models.RecomERP
         public int? ProductID { get; set; }
         public string? SKU { get; set; }
         public string? ItemName { get; set; }
-        public float? ListPrice { get; set; }
-        public float? DealPrice { get; set; }
+        public double? ListPrice { get; set; }
+        public double? DealPrice { get; set; }
         public int? DisplayOrder { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string? CreatedBy { get; set; }
