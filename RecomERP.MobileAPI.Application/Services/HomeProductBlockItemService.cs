@@ -22,10 +22,16 @@ namespace RecomERP.MobileAPI.Application.Services
             return _mapper.Map<IEnumerable<HomeProductBlockItemDto>>(items);
         }
 
-        public async Task<HomeProductBlockItemDto?> GetHomeProductBlockItemByIDAsync(int id)
+        //public async Task<HomeProductBlockItemDto?> GetHomeProductBlockItemByIDAsync(int id)
+        //{
+        //    var item = await _homeProductBlockItemRepository.GetHomeProductBlockItemByIDAsync(id);
+        //    return item == null ? null : _mapper.Map<HomeProductBlockItemDto>(item);
+        //}
+        public async Task<IEnumerable<HomeProductBlockItemDto>> GetItemsByProductBlockIdAsync(int productBlockId)
         {
-            var item = await _homeProductBlockItemRepository.GetHomeProductBlockItemByIDAsync(id);
-            return item == null ? null : _mapper.Map<HomeProductBlockItemDto>(item);
+            var items = await _homeProductBlockItemRepository.GetItemsByProductBlockIdAsync(productBlockId);
+            return _mapper.Map<IEnumerable<HomeProductBlockItemDto>>(items);
         }
+
     }
 }

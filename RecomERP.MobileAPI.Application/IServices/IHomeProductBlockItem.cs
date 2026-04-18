@@ -5,6 +5,7 @@ namespace RecomERP.MobileAPI.Application.IServices
     public interface IHomeProductBlockItemService
     {
         Task<IEnumerable<HomeProductBlockItemDto>> GetAllHomeProductBlockItemsAsync();
-        Task<HomeProductBlockItemDto?> GetHomeProductBlockItemByIDAsync(int id);
+        //Task<HomeProductBlockItemDto?> GetHomeProductBlockItemByIDAsync(int id);
+        Task<IEnumerable<HomeProductBlockItemDto>> GetItemsByProductBlockIdAsync(int productBlockId);
     }
 }

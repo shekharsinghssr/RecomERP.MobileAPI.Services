@@ -26,17 +26,35 @@ namespace RecomERP.MobileAPI.Infrastructure.Repositories
             }
         }
 
-        public async Task<HomeProductBlockItem?> GetHomeProductBlockItemByIDAsync(int id)
+
+        //public async Task<HomeProductBlockItem?> GetHomeProductBlockItemByIDAsync(int id)
+        //{
+        //    try
+        //    {
+        //        return await _recomERPDb.HomeProductBlockItems
+        //            .FirstOrDefaultAsync(x => x.ProductBlockId == id && x.IsActive == true);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error fetching HomeProductBlockItem with ID {ID}", id);
+        //        return null;
+        //    }
+        //}
+
+
+        public async Task<IEnumerable<HomeProductBlockItem>> GetItemsByProductBlockIdAsync(int productBlockId)
         {
             try
             {
                 return await _recomERPDb.HomeProductBlockItems
-                    .FirstOrDefaultAsync(x => x.HomeProductID == id && x.IsActive == true);
+                    .Where(x => x.ProductBlockId == productBlockId)
+                    .OrderBy(x => x.DisplayOrder)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error fetching HomeProductBlockItem with ID {ID}", id);
-                return null;
+                _logger.LogError(ex, "Error fetching HomeProductBlockItems with ProductBlockId {ID}", productBlockId);
+                return Enumerable.Empty<HomeProductBlockItem>();
             }
         }
     }

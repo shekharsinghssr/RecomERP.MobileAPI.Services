@@ -21,13 +21,21 @@ namespace RecomERP.MobileAPI.ApiServices.Controllers
             return Ok(items);
         }
 
-        [HttpGet("GetByID/{id}")]
-        public async Task<IActionResult> GetHomeProductBlockItemByID(int id)
+        //[HttpGet("GetByID/{id}")]
+        //public async Task<IActionResult> GetHomeProductBlockItemByID(int id)
+        //{
+        //    var item = await _homeProductBlockItemService.GetHomeProductBlockItemByIDAsync(id);
+        //    if (item == null)
+        //        return NotFound($"HomeProductBlockItem with ID {id} not found");
+        //    return Ok(item);
+        //}
+
+
+        [HttpGet("GetByProductBlockId/{productBlockId}")]
+        public async Task<IActionResult> GetItemsByProductBlockId(int productBlockId)
         {
-            var item = await _homeProductBlockItemService.GetHomeProductBlockItemByIDAsync(id);
-            if (item == null)
-                return NotFound($"HomeProductBlockItem with ID {id} not found");
-            return Ok(item);
+            var items = await _homeProductBlockItemService.GetItemsByProductBlockIdAsync(productBlockId);
+            return Ok(items);
         }
     }
 }
